@@ -1,0 +1,554 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>Creating a Simple Game with HTML5 Canvas and JavaScript&nbsp;&nbsp;&nbsp;&nbsp; 
+STEP 1: Introduction &amp; Background</title>
+</head>
+
+<body bgcolor="#d0d0d0">
+<font face="Times New Roman">
+<div align="center">
+  <center>
+<table width="621" border="1" bgcolor="#FFFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="103"><div align="center">STEP 1</div></td>
+    <td width="103"><div align="center"><a href="step2.html" title="Step 2: Character & Animation">STEP 2</a></div></td>
+    <td width="103"><div align="center"><a href="step3.html" title="Step 3: Physics & Controls">STEP 3</a></div></td>
+    <td width="103"><div align="center"><a href="step4.html" title="Step 4: Platforms & Collisions">STEP 4</a></div></td>
+    <td width="103"><div align="center">
+		<a title="Step 5: Scrolling &amp; Game States" href="step5.html">STEP 5</a></div></td>
+    <td width="103"><div align="center"><a href="custom.html" title="Custom Simple Game">Custom</a></div></td>
+<font face="Times New Roman">
+  </tr>
+</table>
+
+  </center>
+</div>
+
+<center>
+<table border="0" cellspacing="0" width="100%" id="AutoNumber2" height="1" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0">
+  <tr>
+    <td width="100%" align="center" height="1"><p>
+    <b>
+    <font size="2" face="Times New Roman">&nbsp;&nbsp;&nbsp; <br>
+    </font>
+    <font size="5" face="Times New Roman">Creating a 
+      Simple Game with HTML5 Canvas and JavaScript</font><font size="6" face="Times New Roman"><br>
+    STEP 1: Introduction &amp; Background</font></b></p>
+      </td>
+  </tr>
+</table>
+</center>
+
+    <p>These directions will guide you through creating a very simple HTML5 and 
+    JavaScript based game called <i>Stairs to Heaven</i>. This is a very small, 
+    very simple game originally coded by Michal Budzynski for a coding 
+    competition (the game is based on <i>Doodle Jump</i>, an iPhone game from 
+    2009). We are going to borrow it and use it to learn how a simple game 
+    is coded. Shhhh...don't tell Michal.<p>In <i>Stairs to Heaven</i>, you are a little angel character bouncing 
+into the air...</p>
+<p align="center">
+<img border="0" src="pics/100.png" width="192" height="298"></p>
+<p>The goal is to hit colored platforms that bounce the angel into 
+the air as long as you can. The game ends when the angel falls to the bottom of 
+the screen. To play the game and get an idea of how it works, go
+<a href="Game/Stairs%20to%20heaven%20in%2010k%20by%20Michal%20Budzynski.html">
+HERE</a>.</p>
+<p>To keep the file size of this game as small as possible, it only uses three 
+files: the angel graphic, the JavaScript file that contains the game code, and an 
+HTML document to insert and run the game in a browser. I will give you the angel graphic and all 
+of the code, you just need to put it all together in a file, make some 
+adjustments here and there, and understand how the game works.</p>
+<p>Since our code uses HTML5 and JavaScript, <b>the game will need to be played 
+within a browser</b> and we will need to create a small webpage to hold and display 
+the game while being played. Don't worry, we are not going to take the time to 
+learn how to create a fully functioning webpage (that information is covered in 
+the Web Technologies course, which you can take next year), but we do need to work with some basic codes.</p>
+<p>Keep in mind as you work through this project that our main goal here is get 
+some exposure to coding. This is not intended to be a game that you are actively 
+coding yourself, instead it is meant to serve as an introduction to coding so 
+you can understand how things work and get a look at the structure. As you go 
+along, pay attention to how things are put together. This will give you some 
+great insight into how interested you are in moving on to actually writing 
+your own game code in the future.</p><hr>
+<p>Before we start coding, we need to open a basic text editor. The code we are 
+going to work with needs to be very basic, very simple text with no formatting 
+(our browser will take care of applying formatting based on the code we input). 
+We can't use sophisticated document editors like Microsoft Word or Apple Pages. 
+Instead, we need what is known as a simple text editor. The good news is that 
+most devices have a simple text editor built in.</p>
+<ul>
+	<li>If you are on a Windows based machine, search for a program called <b>
+	Notepad</b></li>
+	<li>If you are on a Mac, search for a program called <b>TextEdit</b></li>
+	<li>If you are on a tablet or a phone, there several apps you can download 
+	that will work, such as <b>Notepad Free</b> for Android (if you are on an 
+	iphone you are going to have to search for an app yourself since I don't 
+	have an iphone and thus have no idea what works on them)</li>
+	<li>If you find that you simply do not have a suitable program on your 
+	device, you can go to the Chrome Web Store and search for an extension 
+	called <b>Text</b> (the icon looks like this:)<br>
+<img border="0" src="pics/100.jpg" width="82" height="82"><br>
+	Simply load this as an extension for your browser</li>
+	<li>Finally, if all else fails, there are multiple websites that allow you 
+	type in basic text and save it - one example is
+	<a href="https://www.outpan.com/app/e7d5b37405/mytextarea">MyTextArea</a>, 
+	which allows you to not only type in and save text, but you can also open 
+	existing files, which is really helpful when working with the same document 
+	over multiple days</li>
+</ul>
+<p><font color="#FF0000" size="5"><b>What text editor you use is up to you, so 
+take the time now to select one. Let me say this one more time because every 
+year there are students who do not listen - DO NOT USE A DOCUMENT EDITOR SUCH AS 
+MICROSOFT WORD. While it may seem like this will be helpful to you, the reality 
+is that it will actually make your work harder as we move on.</b></font></p>
+<p>Trust me on this.</p>
+<hr>
+<p><b><font size="5">CREATING THE WEB PAGE</font></b></p>
+<p>So at this point you should have decided on a text editor and have it open on 
+your device.</p>
+<p>Let's get started by creating the HTML document that will hold our game and 
+allow it to be played in a browser. The code is very simple and 
+includes some basic CSS (Cascading Style Sheets, which is the coding 
+method that allows us to format text and other objects within a webpage).</p>
+<ol>
+  <li>Open your text editor if it is not already open (if you are on a Windows 
+	based machine, Notepad can be opened by going to Start / All Programs / Accessories / Notepad, or 
+  click Start and type notepad in the search box)</li>
+  <li>Click and drag in the box below to highlight all of the text:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber3" height="267" bgcolor="#FFFFFF">
+    <tr>
+      <td width="100%" height="267">
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">&lt;html&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">&lt;head&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">&lt;title&gt;Simple game with HTML5 Canvas&lt;/title&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  &lt;style&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    body {</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    margin:0px;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    padding:0px;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    text-align:center;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  }</font></pre>
+      <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    canvas{</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    outline:0;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    border:1px solid #000;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    margin-left: auto;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    margin-right: auto;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  }</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  &lt;/style&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">&lt;/head&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">&lt;body&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  &lt;canvas id='c'&gt;&lt;/canvas&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  &lt;script src=&quot;game.js&quot;&gt;&lt;/script&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">&lt;/body&gt;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">&lt;/html&gt;</font></pre></td>
+    </tr>
+  </table>
+  </li>
+  <li>Press <b>Ctrl+C</b> (or whatever the equivalent command is on your device) to copy the text to the computer's clipboard</li>
+  <li>Go to to your text editor and press <b>Ctrl+V</b> (or whatever the 
+	equivalent command is on your device) to paste the code 
+  into the blank document...<br>
+<img border="0" src="pics/110.jpg" width="511" height="449"><br>
+	Note that I will be using Notepad for the screenshots for this tutorial</li>
+</ol>
+<p>We are not going to spend a great deal of time discussing what each piece of 
+the above code does because it is pretty simple and not really important for 
+what we are doing. You do need to notice the
+<font face="Lucida Console" size="2"><span style="background-color: #FFFFFF">canvas</span></font> 
+element. This element is used in HTML5 to have the browser dynamically (meaning 
+automatically as needed) draw 
+graphics using JavaScript as the user interacts with the page. For 
+this game, we will be drawing a few simple items such as the jump platforms and 
+the clouds (basically just white circles) you see in the first image on this 
+page.</p>
+<p>Notice also that the JavaScript file &quot;game.js&quot; is referenced. We have not 
+created this file yet, but when we do we will already have the Web document 
+ready to go to be able to view and play it.</p>
+<p>Let's save this document on your device.</p>
+<ol start="5">
+  <li>Create a folder on your device where you can remember where it is and name 
+	that folder <b>SimpleGame</b></li>
+</ol>
+<p>It is important that we create a folder to put the three pieces of our game 
+in so that when the game is played the code is able to find all of the parts and 
+the game will play as it should. If we don't save everything to one folder the 
+game simply will not work.</p>
+<ol start="6">
+  <li>Click <b>File</b> and then click <b>Save As</b>...<b>
+  </b>(or whatever the equivalent command for your program)<b><br>
+  </b>
+<img border="0" src="pics/102.jpg" width="287" height="245"></li>
+  <li>Go into the <b>SimpleGame</b> folder your created in direction 5 above</li>
+  <li>Name the file <b>index.html</b> - note that you <i>MUST</i> type the name 
+  out completely including the period and the html...<br>
+<img border="0" src="pics/101.jpg" width="309" height="77"></li>
+  <li>Click <b>Save</b></li>
+</ol>
+<hr>
+<p><b><font size="5">SAVING IN TEXT EDITORS</font></b></p>
+<p>A quick word about saving files in most text editors. Notepad, as an example, is a simple text editor 
+that saves documents in the .txt (text) format. If we try to open a text file in 
+a browser, nothing will work because browsers have no idea how to handle .txt files. 
+Therefore, we must specifically indicate what type of file we are creating, 
+which is why we must include the .html extension. When we create the JavaScript file in a 
+moment, we will need to specifically indicate that the file is a .js file.</p>
+<p>Also keep in mind that when you try to open a .html or .js file using Notepad 
+as well as some other text editors, 
+that you will need to change the document type...</p>
+<p align="center">
+<img border="0" src="pics/103.jpg" width="494" height="91"></p>
+<p>from Text Documents to All Files before you will be able to see .html or .js 
+files in the file list. Note that opening your folder and double-clicking the 
+file does not always work. Doing this will open .html files (they just open in a 
+browser), but it won't work for .js files. A quick and easy way to open .js 
+files 
+from your folder is to right-click the file, point at Open with, and choose 
+your text editor from the program list...</p>
+<p align="center">
+<img border="0" src="pics/104.jpg" width="544" height="388"></p>
+<p align="left">
+Or you can open your text editor program and use File and then Open and then 
+double-click the index.html from your SimpleGame folder.</p>
+<hr>
+<p><b><font size="5">CREATING THE JAVASCRIPT FILE</font></b></p>
+<p>Ok, let's create some JavaScript. Let's start by creating a few global 
+variables and define some of the canvas attributes.</p>
+<ol start="10">
+  <li>In your text editor, start a new file (in Notepad you click File and then click New)...<br>
+<img border="0" src="pics/105.jpg" width="223" height="225"></li>
+  <li>Copy and paste the following code into the blank document:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber4" bgcolor="#FFFFFF">
+    <tr>
+      <td width="100%">
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var width = 1650,</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Setting the width of the canvas</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  height = 10,</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Setting the height of the canvas</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  gLoop,</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  c = document.getElementById('c'),</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Creating the canvas itself </font></pre>
+      <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  ctx = c.getContext('2d');</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Setting the graphic context of the canvas</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//to 2d (3d is not widely supported)</font></pre>
+      <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  c.width = width;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  c.height = height;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Setting the canvas size</font></pre>
+      </td>
+    </tr>
+  </table>
+  </li>
+</ol>
+<p>Basically the code above creates and defines the canvas, or the area of our 
+screen where all of the game action takes place, using JavaScript. As we 
+work through the code, you will notice lots of comments. The comments are lines 
+of code that start with with two forward slashes: </font>
+<font face="Lucida Console">
+//</font><font face="Times New Roman">. These lines of code are usually 
+placed 
+below the piece of code they are describing. Comments are actually ignored by the 
+browser when the game is 
+running. This allows us to use comment lines to talk about a large variety of 
+things without those lines interfering with game play. Comments are included in 
+this tutorial to help you understand what is going on with the code.</p>
+</font>
+<p align="center"><b><font size="5" face="Tahoma">TAKE THE TIME TO READ THROUGH THE COMMENTS</font></b></p>
+<font face="Times New Roman">
+<p>I have highlighted the comments in <font color="#FF0000">red</font> in this 
+tutorial to make it easier for you to see them (they will not be in red when you 
+paste the code into your text editor) 
+- <b><font color="#FF0000">READ THEM</font></b>. Since working with code is 
+likely new to you, reading the comments as you work 
+through each Step will give you a better understanding of what is going on with 
+each individual element of the game. Additionally, it will help you gain a better understanding of JavaScript 
+and HTML5 
+(which is the entire point of doing this lesson) and will allow 
+you to work toward creating more and more complicated games as you progress.</p>
+<p>The code above will give us a box that is 1650 pixels 
+wide and 10 pixels tall to play our game in. This is a really, really wide and 
+really, really short box. Let's adjust these numbers to get a box that is a 
+little easier to work with.</p>
+<ol start="12">
+  <li>Change the width of the canvas to 320 and change the height of the canvas 
+  to 500...<br>
+<img border="0" src="pics/106a.jpg" width="245" height="62"></li>
+</ol>
+<p>Let's save what we have so far and take a look at it in a browser.</p>
+<ol start="13">
+  <li>Click <b>File</b> and then click <b>Save As</b></li>
+  <li>Go to your <b>SimpleGame</b> folder</li>
+  <li>Name the file <b>game.js</b> - remember that you must type the entire file 
+  name including the .js...<br>
+<img border="0" src="pics/108.jpg" width="325" height="67"><br>
+  Be careful to get the name correct - remember that we have already created the 
+  webpage that the game will play in and that webpage will look for this exact 
+  name</li>
+  <li>Click <b>Save</b></li>
+  <li>Go to your <b>SimpleGame</b> folder and 
+  double-click the <b>index.html</b> file - this will open the page in a 
+  browser...<br>
+<img border="0" src="pics/109.jpg" width="395" height="547"><br>
+  <span style="background-color: #FFFF00"><b>
+  <i><font size="4">NOTE: Microsoft's browsers tend to have a difficult time playing HTML5 based files, so 
+  if your game opens automatically in Internet Explorer or Edge, try opening it 
+  in Chrome - you can usually do this by right-clicking the file and choosing 
+	Open With and selecting Chrome, or by simply clicking and dragging the onto 
+	the Chrome browser window</font></i></b></span></li>
+</ol>
+<p>You should have a blank rectangle similar to the image above. The canvas is 
+blank because we haven't put anything on it yet.</p>
+<hr>
+<p><b><font size="5">DEALING WITH PROBLEMS</font></b></p>
+<p>If your canvas does not look like the one above, or if you do not have a 
+canvas showing up at all, then you have an issue that you need to fix. There are 
+several things you can check at this point to see if they are the problem:</p>
+<ul>
+        <li>Make sure that you are using a simple text editor such as Notepad to edit your text - any other 
+		more sophisticated 
+        text editor will insert unnecessary code which will mess things up</li>
+        <li>Make sure that you have named both files correctly - they should be 
+        named index.html and game.js - if you have given them the wrong file 
+        names or if either of the file extensions (the .html and the .js) are wrong, then your game 
+        will not work (make sure that you can see the file extension of your 
+		files - if you can't, you will have to search the Internet to figure out 
+		how to make the file extensions visible to you on your particular 
+		device)</li>
+        <li>Make sure that both files are saved in the correct place (your 
+        SimpleGame folder) - the webpage (the .html file) can only find the 
+        game file (the .js file) if they are in the same folder</li>
+        <li>Make sure that you have copy and pasted the code correctly</li>
+        <li>Make sure that you edited the height and width of the canvas using 
+        the correct numbers (direction 12 above)</li>
+        <li>Make sure that you are opening the page in Chrome and not a 
+        Microsoft based browser</li>
+</ul>
+<p>If all of the above items check out and you still have problems, then you did 
+something wrong outside of the directions. Your best bet at this point is to 
+delete the files you have saved up to this point and to start over, this time 
+actually reading the directions carefully and following along with what they 
+say. Keep in mind that if your game does not work that YOU DID SOMETHING WRONG. 
+Please DO NOT ask your teacher to debug your code for you. They won't do it. You 
+need to figure out what the problem is because working with the code is the 
+ENTIRE REASON WE ARE DOING THIS. 
+Once everything is entered correctly your game will work.</p>
+<table border="1" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber10">
+  <tr>
+    <td width="100%" bgcolor="#FFFFFF">
+<font face="Times New Roman">
+    Let me say a quick word about encountering bugs (problems) with your games. 
+    It is important to note that troubleshooting (finding and fixing problems 
+    with your game) is a necessary part of being a game designer. Every game you 
+    create will have some kind of problem with it as some point - this is 
+    normal and is actually expected and what you want. Accept that you will have problems, and work through them - just as 
+    you should have worked through the 6 above items if your game had issues - 
+    and use them as learning experiences. There has never been a game created 
+    that had zero issues - all games require some adjustments. Realize at this 
+    point that tweaking your games is an expected step in the game creation 
+    process.</font></td>
+  </tr>
+</table>
+<hr>
+<p><b><font size="5">CONTINUE BUILDING THE JAVASCRIPT GAME</font></b></p>
+<p>OK, back to our game.</p>
+<p>An important thing to remember about working with the canvas element is that 
+objects do not actually move on the canvas surface like an animated graphic. 
+Instead, the entire canvas is very quickly re-drawn to create the illusion of 
+motion. In other words, things don't actually move, but pop up in sequence to 
+simulate motion. Because of this, we need to insert some code to clear the 
+canvas after each instance of motion.</p>
+<ol start="18">
+  <li>Return to your text editor and place the insertion point a blank line <b>BELOW</b> the 
+  current text...<br>
+<img border="1" src="pics/107.jpg" width="306" height="194"><br>
+  You should see an insertion bar that looks like the one pointed at in the above 
+  image in most text editors - be sure that you are leaving a blank line above the 
+	insertion bar</li>
+</ol>
+<p>For pretty much all of the code we will be inserting in these tutorials, we 
+will want to leave a blank line between the existing text and the new text.</p>
+<ol start="19">
+  <li>Copy and paste the following code onto the very bottom line in your text 
+	editor:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber5" bgcolor="#FFFFFF">
+    <tr>
+      <td width="100%">
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var clear = function(){</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  ctx.fillStyle = '#d0e7f9';</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Sets the background color to #d0e7f9, which is a light blue</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  ctx.clearRect(0, 0, width, height);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Clears the contents of the canvas</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  ctx.beginPath();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Start drawing on the canvas</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  ctx.rect(0, 0, width, height);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Draw a rectangle from point (0, 0) - which is</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font face="Lucida Console" color="#FF0000">//the upper left hand corner of the rectangle - </font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//to the width and height you set earlier</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//and covering the entire canvas</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  ctx.closePath();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//End drawing on the canvas</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  ctx.fill();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Fill rectangle with the active color -</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//the light blue - defined earlier</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  }</font></pre>
+      </td>
+    </tr>
+  </table>
+  </li>
+</ol>
+<p>Reading through the above code, you should notice the repeated use of ctx. 
+This is commonly used in JavaScript when working with the canvas element. It is 
+short for ConTeXt, and allows us to create an Array (a variable with multiple 
+values), which shortens and simplifies our code.</p>
+<p>Note that the first comment above tells us that the code is creating a simple colored 
+(light blue) background (to represent the sky). This is a little boring, so let's add some excitement 
+with some moving clouds. Since this is a simple game, we do not want to get 
+overly fancy with our clouds. We are just going to use a few circles of varying 
+size and transparency.</p>
+<ol start="20">
+  <li>Copy and paste the following code a blank line <b>BELOW</b> all of the previous 
+  code:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="75%" id="AutoNumber6" bgcolor="#FFFFFF">
+    <tr>
+      <td width="100%">
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var howManyCircles = 10, circles = [];</font></pre>
+      <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  for (var i = 0; i &lt; howManyCircles; i++) </font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  circles.push([Math.random() * width, Math.random() * height, Math.random() * 100, Math.random() / 2]);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//This defines the x &amp; y positions of our clouds,</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//radius from 0-100 (how wide the circles are), transparency from 0-0.5</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//(0 is invisible and 1 is solid); we want all of the clouds to be</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//somewhat transparent - this is what the divide by 2 at the end does</font></pre>
+      <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var DrawCircles = function(){</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  for (var i = 0; i &lt; howManyCircles; i++) {</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    ctx.fillStyle = 'rgba(255, 255, 255, ' + circles[i][3] + ')';</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//The three 255's define white (hex color) with the var i on the previous line </font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font face="Lucida Console" color="#FF0000">//</font><font size="2" color="#FF0000" face="Lucida Console">defining transparency in red/green/blue color scheme</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    ctx.beginPath();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    ctx.arc(circles[i][0], circles[i][1], circles[i][2], 0, Math.PI * 2, true);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" color="#FF0000" face="Lucida Console">//Arc with the following definitions: x, y, radius, startAngle, endAngle, anticlockwise</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    ctx.closePath();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    ctx.fill();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  }</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  };</font></pre>
+      </td>
+    </tr>
+  </table>
+  </li>
+</ol>
+<p>Take a second and locate the </font>
+<span style="background-color: #FFFFFF">
+<font face="Lucida Console" size="2">
+ctx.fillStyl</font><font face="Courier New" size="2">e</font></span><font face="Times New Roman"> 
+line of code. Notice that is is equal to multiple values? By doing this, we have 
+actually created an Array inside 
+of an Array. There are other ways to pull this off, but it turns out that this 
+method is one of the best ways to get circles to move in 
+2D (up and down and left and right).</font></p>
+<p><font face="Times New Roman">The next thing we need to add is a function that will move the clouds down a few pixels 
+to simulate motion. Also, we want clouds to constantly appear at the top of the 
+canvas while those that reach the bottom disappear.</p>
+<ol start="21">
+  <li>Copy and paste the following code a blank line <b>BELOW</b> all of the previous 
+  code:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber7" bgcolor="#FFFFFF">
+    <tr>
+      <td width="100%">
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var MoveCircles = function(e){</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  for (var i = 0; i &lt; howManyCircles; i++) {</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    if (circles[i][1] - circles[i][2] &gt; height) {</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//Once a circle reaches the bottom of the screen</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font face="Lucida Console" color="#FF0000">//we change </font><font size="2" face="Lucida Console" color="#FF0000">it's settings</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">      circles[i][0] = Math.random() * width;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">      circles[i][2] = Math.random() * 100;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">      circles[i][1] = 0 - circles[i][2];</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">      circles[i][3] = Math.random() / 2;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    } </font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    else {</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//Move circle (change in Y axis) e pixels down:</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">      circles[i][1] += e;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">    }</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  }</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">};</font></pre></td>
+    </tr>
+  </table>
+  </li>
+</ol>
+<p>Make sure you are reading the comments to get a better understanding of what 
+is going on with our game. You should notice that the top part of the code 
+relates to what happens to our clouds when the reach the bottom of the screen 
+while the lower part covers moving the clouds down.</p>
+<hr>
+<p>The final thing we need to do before we take a look at what we've got so far is to create a main game loop to connect 
+together everything we have created to this point. We need to have each frame clear the screen, move the circles down 5 pixels, redraw them, and after 1/50th of a second call the next frame 
+of motion.</p>
+<ol start="22">
+  <li>Copy and paste the following code a blank line <b>BELOW</b> all of the previous 
+  code:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber8" bgcolor="#FFFFFF">
+    <tr>
+      <td width="100%">
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var GameLoop = function(){</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   clear();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   MoveCircles(5);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   DrawCircles();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   </font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   gLoop = setTimeout(GameLoop, 1000 / 50);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   } </font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">GameLoop();</font></pre></td>
+    </tr>
+  </table>
+  </li>
+</ol>
+</font>
+<font face="Times New Roman">
+<p>Notice the loop references at the very end? If you refer back to the first 
+section of code that you copied, you will notice that the 5th line of code 
+contains </font>
+<font face="Lucida Console" size="2"><span style="background-color: #FFFFFF">gLoop</span></font><font face="Times New Roman">. 
+The </font>
+<font face="Lucida Console" size="2"><span style="background-color: #FFFFFF">gLoop</span></font><font face="Times New Roman">
+in the code above is making a direct reference to that first </font>
+<font face="Lucida Console" size="2"><span style="background-color: #FFFFFF">
+gLoop</span></font><font face="Times New Roman">
+and allows the clouds to scroll continually. I know, cool.</p>
+<p>By the way, remember where the </font>
+<font face="Lucida Console" size="2">
+<span style="background-color: #FFFFFF">var GameLoop</span></font><font face="Times New Roman"> 
+variable is located in the code above (it is at the very top of the box) as we will be making changes to it in 
+each of the next 4 Steps.</font></p>
+<p><font face="Times New Roman">Let's save the code that we have created for our 
+game up to this point and have a 
+look at in a browser.</p>
+<ol start="23">
+  <li>Save your game code file in your <b>SimpleGame</b> folder - give it the 
+	same name: <b>games.js</b> (yes, you want to overwrite the existing file)</li>
+</ol>
+<p>When looking at the files that are in your SimpleGame folder, you should have 
+two files: index.html (which is the webpage that opens in a browser) and game.js 
+(which is the actual code for the game itself that runs inside the index.html 
+page).</p>
+<ol start="24">
+  <li>Open the <b>index.html</b> file in a browser - you should see something 
+	similar to the following...<br>
+<img border="0" src="pics/111.gif" width="212" height="330"><br>
+  Note that the above image is an animated graphic, which is why the animation 
+	is simply repeating - your image should scroll continuously</li>
+</ol>
+<p>That's all for this first Step. In the next Step, we will get a character into our game.</p>
+<div align="center">
+  <center>
+<table width="50%" border="1" bgcolor="#FFFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="103"><div align="center">STEP 1</div></td>
+    <td width="103"><div align="center"><a href="step2.html" title="Step 2: Character & Animation">STEP 2</a></div></td>
+    <td width="103"><div align="center"><a href="step3.html" title="Step 3: Physics & Controls">STEP 3</a></div></td>
+    <td width="103"><div align="center"><a href="step4.html" title="Step 4: Platforms & Collisions">STEP 4</a></div></td>
+    <td width="103"><div align="center">
+		<a title="Step 5: Scrolling &amp; Game States" href="step5.html">STEP 5</a></div></td>
+    <td width="103"><div align="center"><a href="custom.html" title="Custom Simple Game">Custom</a></div></td>
+  </tr>
+</table>
+
+  </center>
+</div>
+
+</body>
+
+</html>

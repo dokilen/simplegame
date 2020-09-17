@@ -1,0 +1,349 @@
+<html>
+
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>Creating a Simple Game with HTML5 Canvas and JavaScript&nbsp;&nbsp;&nbsp;&nbsp; 
+STEP 5: Scrolling &amp; Game States</title>
+<style>
+</style>
+</head>
+
+<body bgcolor="#d0d0d0">
+<font face="Times New Roman">
+<div align="center">
+  <center>
+<table width="50%" border="1" bgcolor="#FFFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="103"><div align="center">
+<font face="Times New Roman">
+      <a href="step1.html" title="Step 1: Introduction & Background">STEP 1</a></font></div></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step2.html" title="Step 2: Character & Animation">STEP 2</a></font></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step3.html" title="Step 3: Physics & Controls">STEP 3</a></font></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step4.html" title="Step 4: Platforms & Collisions">STEP 4</a></font></td>
+    <td width="103" align="center"><font face="Times New Roman">
+	<a title="Step 5: Scrolling &amp; Game States" href="step5.html">STEP 5</a></font></td>
+    <td width="103"><div align="center">Custom</div></td>
+  </tr>
+</table>
+  </center>
+</div>
+<center>
+<table border="0" cellspacing="0" width="100%" id="AutoNumber2" height="1" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0">
+  <tr>
+    <td width="100%" align="center" height="1"><p><b><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;
+    <br>
+    </font><font size="5">Creating a 
+      Simple Game with HTML5 Canvas and JavaScript</font><font size="6"><br>
+    Creating a Custom Simple Game</font></b></p>
+      </td>
+  </tr>
+</table>
+</center>
+
+<hr>
+</font>
+<p>
+<font face="Times New Roman">
+Now that you have built a game to my specifications, I'm going to give you an 
+opportunity to make some changes to the code to allow you to 
+personalize the game. You need to realize something very important at this 
+point:</font></p>
+<p align="center">
+<b><font face="Tahoma" size="6" color="#FFFFFF">
+<span style="background-color: #008080">TO COMPLETE THIS PROJECT, YOUR SIMPLE<br>
+GAME FROM STEP 5 MUST PLAY CORRECTLY!</span></font></b></p>
+<p>
+<font face="Times New Roman">
+If your Simple Game does not play correctly, you will need to fix it before you 
+can complete the Custom Simple Game. Customizing the Simple Game will not only 
+give you an opportunity to add a personal touch to your game, but will give you 
+a chance to show that you understand what was going on with each part of the 
+game as we were putting it together.</font></p>
+<hr>
+<p>
+<b><font face="Times New Roman" size="5">CREATE A NEW COPY OF THE GAME FILE</font></b></p>
+<p><font face="Times New Roman">Let's start by creating a copy of your game.js 
+file. We will use this new version of the file to make our changes. DO NOT CHANGE THE CODE OF YOUR game.js 
+file. We want to keep a working version of our game.js file for two main 
+reasons: so we can submit the original file to be graded, and so that we have a 
+copy of the file that actually works in case we mess up our custom game file and 
+need to start over.</font></p>
+<ol>
+<font face="Times New Roman">
+  <li>Open the <b>game.js</b> file in a text editor</li>
+  <li>Click File and then click Save As... (or whatever the equivalent is for 
+	your chosen text editor)</li>
+  <li>Go to your <b>SimpleGame</b> folder</li>
+  <li>Name the file <b>game2.js</b> - note that you <i>MUST</i> type the name 
+  out completely including the period and the js...<br>
+<img border="0" src="pics/c01.jpg" width="344" height="72"></li>
+  <li>Click <b>Save</b></li>
+</font>
+</ol>
+<p><font face="Times New Roman">Again, <b>DO NOT</b> save the changes in this 
+Step to your game.js file. At the end of this Step, you should have <b>TWO</b> .js 
+files - one named <b>game</b> and one named <b>game2</b> (note that you will 
+need to submit both of them for grading).</font></p>
+<p><font face="Times New Roman">Trust me, someone will save the stuff from this 
+step in their game.js file and I will take off a bunch of points and they will 
+yell 'but why!?!' at me and I'll just point to <b> <font color="#008000">THIS</font>
+<font color="#800080">SENTENCE</font> <font color="#808000">RIGHT</font>
+<font color="#008080">HERE</font></b>.</font></p>
+<p><font face="Times New Roman">Don't let that person be you.</font></p>
+<hr>
+<p><b><font face="Times New Roman" size="5">REQUIRED CODE CHANGES</font></b></p>
+<font face="Times New Roman">
+<p>You are <span style="background-color: #FFFF00">REQUIRED</span> to make 5 
+changes to the code, and then you are free to make additional changes if you 
+wish. Follow the directions below to make the 5 required changes.</p>
+<hr>
+<p><font color="#FFFFFF"><span style="background-color: #000000"><b>REQUIRED CHANGE #1</b></span><b><span style="background-color: #000000">:</span></b></font> THE SIZE OF THE CANVAS</p>
+<p>The height of the canvas is actually a pretty good size for this game, so we will only be changing the width of the canvas. Remember that you 
+previously changed the canvas size all the way back in Step 1, so you will 
+adjust the width this time the same way.</p>
+<ol start="6">
+  <li>Open the game2.js file in a text editor (<i><b>DO NOT</b></i> use the game.js 
+  file)</li>
+  <li>Locate the code that sets the width of the canvas, and change the value to 
+  500 (yes, both the height and width should be 500)</li>
+  <li>Save the game2.js file</li>
+</ol>
+<hr>
+<p><span style="background-color: #000000"><font color="#FFFFFF"><b>REQUIRED 
+CHANGE #</b></font></span><font color="#FFFFFF"><b><span style="background-color: #000000">2:</span></b></font> INSERT A NEW CHARACTER GRAPHIC</p>
+<p>You must change the game character to another image. The new character you 
+use is up to you. I have supplied you with you several images you can use if you 
+wish (they are in the Additional Resources folder on Schoology, inside a folder 
+called New Characters), or you can create your own game 
+character for <b> <i><font color="#FF0000">extra credit</font></i></b>. Remember that 
+your character must have 2 image states just like the angel image:</p>
+<p align="center">
+<img border="0" src="angel.png" width="65" height="190"></p>
+<p>The easiest way to create your own image is to open the angel image in 
+Photoshop (or some other image editor) and change it to look the way you want. 
+Just be sure that your new characters are on top of each other just like the 
+angel image. This way, you don't have to worry about matching the height and width of 
+your image to that of the angel image.</p>
+<ol start="9">
+  <li>Either select the pre-made character image you would like to use from the 
+  New Characters folder or create a new character yourself (how to create your 
+  own character using image editing software is 
+  beyond us at this point in the course, so you are on your own if you want to 
+  use a custom character...that's why creating your own character is <i><font color="#FF0000">extra credit</font></i>)</li>
+  <li>Save the image in your <b>SimpleGame</b> folder - you can name it whatever you 
+  want, just don't name it <i>angel</i> as this will save over the original angel image</li>
+  <li>Open the game2.js file in a text editor (<i><b>DO NOT</b></i> use the game.js 
+  file)</li>
+  <li>Change the name of the image in the code from angel.png to whatever you named 
+  the image (Direction 4 of Step 2 shows you in the code where the image is 
+  referenced)</li>
+  <li>Save the game2.js file</li>
+</ol>
+<hr>
+<p><span style="background-color: #000000"><font color="#FFFFFF"><b>REQUIRED 
+CHANGE #</b></font></span><font color="#FFFFFF"><b><span style="background-color: #000000">3:</span></b></font> THE COLOR OF THE PLATFORMS</p>
+<p>You must change the color of both platforms. You can make them any color you like, 
+    just be sure that the super platforms are a different color than the 
+    regular platforms. Remember that the game actually uses 2 colors for both 
+types of platforms, which gives them a gradient appearance...</p>
+<p align="center">
+<img border="0" src="pics/c02.jpg" width="745" height="344"></p>
+<p>Note that the 6 character codes that set the color are known as hex codes. For 
+example, FF8C00 is the hex code for orange. Exactly how hex codes work will be 
+covered later in the course, but for now just realize that every color has a 6 
+character hex code associated with it that allows us to very specifically 
+control what color a game is using. Since we won't go into depth about how hex 
+codes work for a while, you can use
+<a href="https://www.ginifab.com/feeds/pms/color_picker_from_image.php">this 
+website</a> to look up the hex code for the color you wish to use. The website 
+looks like this and is very easy to use:</p>
+<p align="center">
+<img border="0" src="pics/c03.jpg" width="752" height="408"></p>
+<p align="left">Simply click on the color box that you wish you use 
+(for example, in the above image I clicked on the upper-right, reddish color 
+pointed at with the yellow arrow) 
+and note that the hex code will be displayed to the right of the color boxes 
+(the blue arrow above). Just place the code for the new color into 
+the game file.</p>
+<ol start="14">
+  <li>Determine what new colors you wish to use - note that you can either keep 
+  the gradients by using two colors for each platform, or if you wish you can make your 
+  platforms a solid color by simply using the same hex code for both that.firstcolor and that.secondcolor 
+  in the code</li>
+  <li>Open the game2.js file in a text editor (<i><b>DO NOT</b></i> use the 
+  game.js file)</li>
+  <li>Change the color values to the new colors you wish to use</li>
+  <li>Save the game2.js file</li>
+</ol>
+<hr>
+<p><span style="background-color: #000000"><font color="#FFFFFF"><b>REQUIRED 
+CHANGE #</b></font></span><font color="#FFFFFF"><b><span style="background-color: #000000">4:</span></b></font> THE NUMBER OF PLATFORMS</p>
+<p>Since we have a wider canvas, we need more 
+    platforms to help out the player. You can set this number to whatever 
+    number you feel makes the game fun, but keep in mind that 
+    too many platforms will make the game too easy, and too few platforms will 
+    make the game unplayable. No matter what, the game must be playable!!</p>
+<p>Since you are just starting out as a game creator, the perfect number of 
+platforms may be difficult to estimate. The best way to find a number that you 
+are happy with is to experiment until you have a number of platforms that you like.</p>
+<ol start="18">
+  <li>Open the game2.js file in a text editor (<i><b>DO NOT</b></i> use the 
+  game.js file)</li>
+  <li>Locate the code that controls how many platforms are in the game - I 
+  am not going to tell you where this code is located, you'll have to find it 
+  yourself</li>
+  <li>Change the value to a number between 5 and 15 - DO NOT use numbers below 
+  5, above 15, or the number 7 (which is the original value)<br>
+  -- Anything below 5 will result in too few platforms and the game will be 
+  unplayable - no matter what the game must be playable!!<br>
+  -- Anything above 15 will result in too many platforms and the game could 
+  literally play by itself because the character never has a chance to hit the 
+  bottom</li>
+  <li>Save the game2.js file</li>
+</ol>
+<p>When you finish making changes to your game later in this step and you have 
+created a new webpage to hold your game, you can play 
+it in the browser and determine if you like the number of platforms you have set 
+or if you would like to change it.</p>
+<hr>
+<p><span style="background-color: #000000"><font color="#FFFFFF"><b>REQUIRED 
+CHANGE #</b></font></span><font color="#FFFFFF"><b><span style="background-color: #000000">5:</span></b></font> THE GAME OVER MESSAGE</p>
+<p>The current Game Over message is rather boring, so let's spice it up a bit. 
+You can make the text say anything you like, just be sure it conveys that the 
+game is over and that you are showing the player what their final score is. 
+Also, the text must be <b>
+<font color="#800080">school appropriate</font></b>. Seriously, don't make me 
+write you up because you put something vulgar in your game.</p>
+<ol start="22">
+  <li>Open the game2.js file in a text editor (<i><b>DO NOT</b></i> use the 
+  game.js file)</li>
+  <li>Locate the code that controls the Game Over message</li>
+  <li>Change the font to Comic Sans MS</li>
+  <li>Change the color from black to red</li>
+  <li>Save the game2.js file</li>
+</ol>
+<hr>
+<p><font size="5"><b>OPTIONAL</b></font><b><font face="Times New Roman" size="5"> 
+CODE CHANGES</font></b></p>
+<p>You <i>MUST</i> make the five changes indicated above, but to allow you to 
+really customize your game to something that you like, you are free to make 
+additional changes. Some things you may want to consider changing include:</p>
+<ul>
+  <li>Bounce height</li>
+  <li>Gravity</li>
+  <li>The speed of the platforms</li>
+  <li>The size of the Game Over text</li>
+  <li>The position of the Game Over text</li>
+  <li>The shape of the clouds</li>
+  <li>The color of the clouds</li>
+  <li>The number of clouds</li>
+  <li>The color of the sky (make sure the platforms, clouds,  
+  character, and game over text can all be easily seen over the new sky color)</li>
+  <li>The number of points awarded each time the screen scrolls</li>
+</ul>
+<p>Note that you DO NOT have to make any additional changes past the required 5 if you don't want 
+to (and if you are pressed for time or actually behind right now, don't bother 
+making any changes other then the required 5), this is just an opportunity for 
+you to personalize the game if you wish.</p>
+<ol start="22">
+  <li>If you wish to make additional changes to your game2.js file, then open it in 
+	a text editor (<i><b>DO NOT</b></i> use the 
+  game.js file) and make whatever changes you want and then save the game2.js 
+  file</li>
+  <li>If you do not wish to make any additional changes past the required 5, 
+  simply move on in these directions</li>
+</ol>
+<hr>
+<p><b><font size="5">CREATE NEW WEB PAGE</font></b></p>
+<p>Now that your game2.js file is ready to go, we need create a new webpage for 
+it to play in.</p>
+<ol start="24">
+  <li>Open the <b>index.html</b> file in a text editor</li>
+  <li>Click File and then click Save As... (or whatever the equivalent command 
+	is for your text editor)</li>
+  <li>Go to your <b>SimpleGame</b> folder</li>
+  <li>Name the file <b>index2.html</b> - note that you <i>MUST</i> type the name 
+  out completely including the period and the html...<br>
+<img border="0" src="pics/c04.jpg" width="301" height="77"></li>
+  <li>Click <b>Save</b></li>
+  <li>Look in the code and locate the reference to &quot;game.js&quot; 
+  and change it to &quot;game2.js&quot; (this will cause the game2 
+  file to load when we open the index2 webpage)</li>
+  <li><b>Save</b> the file again (keep it named index2.html)</li>
+</ol>
+<p>Now we need to test our new game to make sure it works in the browser.</p>
+<ol start="31">
+  <li>Go to your <b>SimpleGame</b> folder</li>
+  <li>Double-click the index2 file to open the page in a browser (note that if 
+	the game does not automatically open in Chrome, you can simply open Chrome 
+	and use the keyboard shortcut Ctrl+O to bring up the Open window and then go 
+	to your <b>SimpleGame</b> folder and double-click the index2 file and it 
+	will open)</li>
+	<li>Test the functionality of your game - the game's level of difficulty 
+	should be similar to how the game played before you made any changes</li>
+  <li>If any part of the game does not work correctly - or if you have too many 
+  or too few platforms for the game to be playable - go into the code for the 
+  game2.js file and <b>FIX THE PROBLEM</b></li>
+</ol>
+<hr>
+</font>
+<font face="Cooper Black" size="4">
+<p><u>
+<font face="Times New Roman">
+<b><font size="5">EXTRA CREDIT</font></b></font></u></p>
+</font>
+<font face="Times New Roman">
+<p>If you find yourself ahead of the rest of the class or want to do some work 
+before or after school to get some extra credit, here is a simple addition you 
+can make to your game. If you actually played the example game linked under the 
+image at the top of Step 1, you might have noticed that the Game Over screen looks 
+like this...</p>
+<p align="center"><img src="pics/501.jpg" width="351" height="191"></p>
+<p>While your Game Over screen looks like this...</p>
+<p align="center"><img src="pics/502.jpg" width="351" height="191"></p>
+<p>Your task to earn this extra credit is to add in code that not only displays  CLICK ANYWHERE TO PLAY 
+AGAIN, but will actually restart the game when the player clicks on the canvas. 
+Feel free to hop on the Internet to get some help with writing the correct code 
+- just be sure that your game plays like it should and actually restarts when 
+the user clicks on the canvas.</p>
+<ol start="35">
+  <li>Once your extra credit code has been inserted and your game works, save it 
+  in your <b>SimpleGame</b> folder as game2.js</li>
+</ol>
+<div align="center">
+  <center>
+<table width="50%" border="1" bgcolor="#FFFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="103"><div align="center">
+<font face="Times New Roman">
+      <a href="step1.html" title="Step 1: Introduction & Background">STEP 1</a></font></div></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step2.html" title="Step 2: Character & Animation">STEP 2</a></font></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step3.html" title="Step 3: Physics & Controls">STEP 3</a></font></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step4.html" title="Step 4: Platforms & Collisions">STEP 4</a></font></td>
+    <td width="103" align="center"><font face="Times New Roman">
+	<a title="Step 5: Scrolling &amp; Game States" href="step5.html">STEP 5</a></font></td>
+    <td width="103"><div align="center">Custom</div></td>
+  </tr>
+</table>
+  </center>
+</div>
+</font>
+  </body>
+
+</html>
+
+</html>

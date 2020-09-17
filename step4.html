@@ -1,0 +1,341 @@
+<html>
+
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>Creating a Simple Game with HTML5 Canvas and JavaScript&nbsp;&nbsp;&nbsp;&nbsp; 
+STEP 4: Platforms &amp; Collisions</title>
+<style>
+</style>
+</head>
+
+<body bgcolor="#d0d0d0">
+<font face="Times New Roman">
+<div align="center">
+  <center>
+<table width="50%" border="1" bgcolor="#FFFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="103"><div align="center">
+<font face="Times New Roman">
+      <a href="step1.html" title="Step 1: Introduction & Background">STEP 1</a></font></div></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step2.html" title="Step 2: Character & Animation">STEP 2</a></font></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step3.html" title="Step 3: Physics & Controls">STEP 3</a></font></td>
+    <td width="103">
+    <p align="center">
+<font face="Times New Roman">
+    STEP 4</font></td>
+    <td width="103"><div align="center">
+		<a title="Step 5: Scrolling &amp; Game States" href="step5.html">STEP 5</a></div></td>
+    <td width="103"><div align="center"><a href="custom.html" title="Custom Simple Game">Custom</a></div></td>
+  </tr>
+</table>
+  </center>
+</div>
+<center>
+<table border="0" cellspacing="0" width="100%" id="AutoNumber2" height="1" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0">
+  <tr>
+    <td width="100%" align="center" height="1"><p>
+    <b>
+    <font size="2" face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp; <br>
+    </font>
+    <font size="5" face="Times New Roman">Creating a 
+      Simple Game with HTML5 Canvas and JavaScript</font><font size="6" face="Times New Roman"><br>
+    STEP 4: Platforms &amp; 
+      Collisions</font></b></p>
+      </td>
+  </tr>
+</table>
+</center>
+
+<p>There are two types of platforms in our game that our character is able to 
+jump on: ordinary ones that bump our character up a little (orange) and 
+trampoline ones that give our character extra speed and a super jump (green). 
+Taking the game window size that we defined at the beginning of this project into consideration, the game works best with 7 platforms on the screen at a time 
+(any more and they begin to get in each other's way, any less and your character 
+has a hard time moving up). Let's create a class called Platform to serve as the 
+function that all of the platforms will use to know how to work.<p><b>
+<font size="5">ADDING THE PLATFORMS</font></b><p>Read the following 
+directions carefully and make certain you are placing all of the new code in the 
+correct location. Be sure to read the comments so you know what is going on.<ol>
+  <li><a name="1"></a>Open <b>game.js</b> in your text editor</li>
+  <li>Locate the following line of code: </font>
+  <font face="Lucida Console" size="2"><span style="background-color: #FFFFFF">
+  var GameLoop = function(){</span></font><font face="Times New Roman"> (it is 
+  near the bottom)</font></li>
+  <li><font face="Times New Roman">Insert a blank line <b>ABOVE</b> the code 
+  indicated above</font></li>
+  <li><font face="Times New Roman"><b>Copy</b> and <b>paste</b> the following 
+  code onto the blank line:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber3" height="71" bgcolor="#FFFFFF">
+    <tr>
+      <td width="100%" height="69">
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var Platform = function(x, y, type){</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//Function will take position and platform type</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var that=this;</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.firstColor = '#FF8C00';</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.secondColor = '#EEEE00';</font></pre>
+</font>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font face="Lucida Console" color="#FF0000"><font size="2">//These define the colors of the platforms</font></font></pre>
+        <font face="Times New Roman">
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.onCollide = function(){</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   player.fallStop();</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   };</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//If platform type is different than 1, set right color &amp; collision function</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//(in this case just call player's fallStop() method that we defined last time)</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">if (type === 1) {</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//But if type is equal to '1', set different color and set jumpSpeed to 50. </font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//After such an operation checkJump() method will take the substituted '50' </font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//instead of the default '17' we set in jump()</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.firstColor = '#AADD00';</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.secondColor = '#698B22';</font></pre>
+</font>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font face="Lucida Console" color="#FF0000"><font size="2">//These colors will combine with those above to </font></font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font face="Lucida Console" color="#FF0000"><font size="2">//create a gradient </font></font></pre>
+        <font face="Times New Roman">
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.onCollide = function(){</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   player.fallStop();</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   player.jumpSpeed = 50;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   };</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   }</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.x = ~~ x;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.y = y;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.type = type;</font></pre>
+        </td>
+    </tr>
+  </table>
+  </li>
+</ol>
+<p>Read the comments carefully. What we are creating here is platform with a 
+jumpspeed of 17 (the regular platforms) when the platform type is any number 
+other than &quot;1&quot;, and a high jump platform with a jumpspeed of 50 when the 
+platform type does equal &quot;1&quot;. This way, we have lots of regular platforms with 
+several, but not too many, high jump platforms thrown in.</p>
+<p>Now we need to create the function that will generate all of the platform 
+items, then we can actually draw the platforms on the screen.</p>
+<ol start="5">
+  <li>Insert a blank line <b>ABOVE</b> the code you inserted in the above 
+  direction</li>
+  <li><b>Copy</b> and <b>paste</b> the following code onto the blank line:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber9" bgcolor="#FFFFFF">
+      <tr>
+        <td width="100%">
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var nrOfPlatforms = 7, </font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   platforms = [],</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   platformWidth = 70,</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   platformHeight = 20;</font></pre></td>
+      </tr>
+    </table>
+  </li>
+  <li>Insert a blank line <b>BELOW</b> the code you inserted in <b>direction 4</b> 
+  above</li>
+  <li><b>Copy</b> and <b>paste</b> the following code onto the blank line:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber4" bgcolor="#FFFFFF">
+    <tr>
+      <td width="100%" height="47">
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var generatePlatforms = function(){</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var position = 0, type;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//'position' is the Y value of the platform</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   for (var i = 0; i &lt; nrOfPlatforms; i++) {</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   type = ~~(Math.random()*5);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   if (type == 0)</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">        type = 1;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   else </font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">        type = 0;</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//The *5 above makes it 5 times more likely to get an</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//ordinary platform than a super one</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   platforms[i] = new Platform(Math.random()*(width-platformWidth), position, type);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//Random X position...</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   if (position &lt; height - platformHeight)</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   position += ~~(height / nrOfPlatforms);</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">  }</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//...and Y position interval</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   }();</font></pre>
+      <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//We call that function only once, before the game starts</font></pre>
+      </td>
+    </tr>
+  </table>
+  </li>
+</ol>
+<p>This code specifically sets the likelihood of getting a high jump platform at 
+5 times that of regular platforms. Which means that on average we should get 1 
+high jump platform for every 5 regular platforms (since these types are randomly 
+generated, the actual, real world numbers may be slightly off so that the actual 
+ratio may be a little higher or a little lower than 5 to 1, but it will be 
+close).</p>
+<p>Now we need to extend the Platform object to the draw( ) method.</p>
+<ol start="9">
+  <li>Locate the following line of code that you inserted in direction 4 above:
+  <span style="background-color: #FFFFFF"><font face="Lucida Console" size="2">that.type = type;</font></span></li>
+  <li>Insert a blank line <b>BELOW</b> the code indicated above</li>
+  <li><b>Copy</b> and <b>paste</b> the following code onto the blank line:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="600" id="AutoNumber5" bgcolor="#FFFFFF" height="280">
+    <tr>
+      <td width="600" height="280">
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   that.draw = function(){</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   ctx.fillStyle = 'rgba(255, 255, 255, 1)';</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//It is important to change transparency to '1' before drawing the platforms as they</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//normally acquire the last transparency setting in Chrome.</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//Because the circles in the background are semi-transparent, it is</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//a good idea to fix it just in case the settings don't match.</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//This is generally not an issue in Firefox and Safari, as those browsers</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//change the transparency by default.</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var gradient = ctx.createRadialGradient(that.x + (platformWidth/2), that.y + (platformHeight/2), 5,
+that.x + (platformWidth/2), that.y + (platformHeight/2), 45);</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   gradient.addColorStop(0, that.firstColor);</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   gradient.addColorStop(1, that.secondColor);</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   ctx.fillStyle = gradient;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   ctx.fillRect(that.x, that.y, platformWidth, platformHeight);</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//Drawing a gradient inside the rectangular platform</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   };</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   return that;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   };</font></pre></td>
+    </tr>
+  </table>
+  </li>
+</ol>
+<p>If you are wondering - yes, we could easily have our platform be a solid 
+color, but platforms with gradients inside them is a lot more fun.</p>
+<hr>
+<p><b><font size="5">CODING THE CHARACTER TO HIT THE PLATFORMS</font></b></p>
+<p>Our next focus needs to be getting the character and the platforms to 
+actually interact. For this we will define a function called
+</font>
+<span style="background-color: #FFFFFF"><font face="Lucida Console" size="2">checkCollision</font></span><font face="Times New Roman">.</p>
+<ol start="12">
+  <li>Locate the following line of code:
+  <span style="background-color: #FFFFFF"><font face="Lucida Console" size="2">var GameLoop = function(){</font></span> </li>
+  <li>Insert a blank line <b>ABOVE</b> the code indicated above</li>
+  <li><b>Copy</b> and <b>paste</b> the following code onto the blank line:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber10" bgcolor="#FFFFFF">
+      <tr>
+        <td width="100%">
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var checkCollision = function(){</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   platforms.forEach(function(e, ind){</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//Check each platform</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   if (</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   (player.isFalling) &amp;&amp;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//Collision occurs only when the character is falling...</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   (player.X &lt; e.x + platformWidth) &amp;&amp;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   (player.X + player.width &gt; e.x) &amp;&amp;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   (player.Y + player.height &gt; e.y) &amp;&amp;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   (player.Y + player.height &lt; e.y + platformHeight)</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console" color="#FF0000">//...and is directly over the platform;</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font face="Lucida Console" color="#FF0000">//this prevents the character from 'jumping' while rising</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   ) {</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   e.onCollide();</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   }</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   })</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   }</font></pre>
+        </td>
+      </tr>
+    </table>
+  </li>
+</ol>
+<p>Note the (player.isFalling) piece of code. This is important because it makes 
+sure that players can only collide with a platform when they are falling (good 
+thing we defined that players fall down due to gravity earlier, huh?). 
+Otherwise, as the character jumped and ran into other platforms it would simply 
+keep jumping and never fall. That wouldn't be a very fun game. With this code, 
+the player simply passes through any platforms above it as they are jumping.</p>
+<p>I'm now going to remind you one more time that nothing is actually moving in 
+our game, but instead the objects are being drawn for each frame of the 
+animation. This means that we have to modify our
+</font>
+<span style="background-color: #FFFFFF"><font face="Lucida Console" size="2">GameLoop</font></span><font face="Times New Roman"> 
+code so that 
+the platforms are drawn on each frame.</font></p>
+<hr>
+<p><b><font size="5">STOP THE CLOUDS FROM MOVING</font></b></p>
+<p><font face="Times New Roman">At this point, let's go ahead and comment out 
+the 
+</font>
+<span style="background-color: #FFFFFF"><font face="Lucida Console" size="2">MoveCircles(5);</font></span><font face="Times New Roman"> 
+line. As our character jumps up the screen, the clouds will automatically move 
+down to simulate our character gaining altitude. Because the clouds will move in 
+response to our character moving, we don't need to make them move on their own 
+('then why did we bother to put that code in if we weren't going to need it' you 
+may ask...and the answer is...because...you know...learning and stuff).</p>
+<ol start="15">
+  <li>Locate the following line of code:
+  <span style="background-color: #FFFFFF"><font face="Lucida Console" size="2">var GameLoop 
+  = function(){</font></span></li>
+  <li>Modify the code that follows the code indicated above so that is matches 
+  the code below:<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="60%" id="AutoNumber11" bgcolor="#FFFFFF">
+      <tr>
+        <td width="100%">
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">var GameLoop = function(){</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   clear();</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   //MoveCircles(5);</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   DrawCircles();</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   if (player.isJumping) player.checkJump();</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   if (player.isFalling) player.checkFall();</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   player.draw();</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   platforms.forEach(function(platform){</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   platform.draw();</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   });</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   checkCollision();</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   gLoop = setTimeout(GameLoop, 1000 / 50);</font></pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font size="2" face="Lucida Console">   }</font></pre>
+        <pre name="code" class="js" style="color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0">&nbsp;</pre>
+        <pre name="code" class="js" style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top:0; margin-bottom:0"><font face="Lucida Console">GameLoop();</font></pre></td>
+      </tr>
+    </table>
+  </li>
+</ol>
+An important thing to remember about simple code like what we are using is that 
+blank lines are generally ignored when the code is executed. Don't worry if your 
+code has more or fewer blank lines than mine does - it is highly unlikely that 
+we will encounter any problems because of this.<ol start="17">
+  <li>Save the file to your <b>SimpleGame</b> folder as <b>game.js</b></li>
+  <li>Open the <b>index.html</b> file located in your <b>SimpleGame</b> folder - you should see 
+  something similar to the following: <br>
+<img border="1" src="pics/401.gif" width="304" height="488"><br>
+  You should note several things about the current state of your game:<ul><li>
+    The circle shaped clouds in the background are no longer moving (they will 
+    appear to move again in the next Step)</li><li>The angel character is bouncing up and down on 
+    the bottom of the game window</li><li>The angel character should move back 
+    and forth as you move your mouse back and forth across the canvas</li><li>
+    The platforms should make the angel 
+    character 
+  bounce into the air, and then it should return to the bottom of the canvas</li></ul></li>
+</ol>
+<p>In the next Step, we will wrap up creating our simple game and then you will 
+create your own, custom version.</p>
+<div align="center">
+  <center>
+<table width="50%" border="1" bgcolor="#FFFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="103"><div align="center">
+<font face="Times New Roman">
+      <a href="step1.html" title="Step 1: Introduction & Background">STEP 1</a></font></div></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step2.html" title="Step 2: Character & Animation">STEP 2</a></font></td>
+    <td width="103" align="center">
+<font face="Times New Roman">
+    <a href="step3.html" title="Step 3: Physics & Controls">STEP 3</a></font></td>
+    <td width="103">
+    <p align="center">
+<font face="Times New Roman">
+    STEP 4</font></td>
+    <td width="103"><div align="center">
+		<a title="Step 5: Scrolling &amp; Game States" href="step5.html">STEP 5</a></div></td>
+    <td width="103"><div align="center"><a href="custom.html" title="Custom Simple Game">Custom</a></div></td>
+  </tr>
+</table>
+  </center>
+</div>
+</font>
+  </body>
+
+</html>
+
+</html>
